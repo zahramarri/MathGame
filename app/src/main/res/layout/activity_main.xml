@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65"
+        app:layout_constraintVertical_bias="0.64"
         tools:visibility="gone" />
 
     <TextView
@@ -93,5 +93,47 @@
         app:layout_constraintTop_toTopOf="@+id/tvDiceB"
         tools:layout_editor_absoluteY="249dp"
         tools:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvOption1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvOption2"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/tvOption2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.64" />
+
+    <TextView
+        android:id="@+id/tvOption2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvOption1"
+        app:layout_constraintEnd_toStartOf="@id/tvOption3"
+        app:layout_constraintStart_toEndOf="@+id/tvOption1"
+        app:layout_constraintTop_toTopOf="@+id/tvOption1" />
+
+    <TextView
+        android:id="@+id/tvOption3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvOption2"
+        app:layout_constraintEnd_toStartOf="@id/tvOption4"
+        app:layout_constraintStart_toEndOf="@id/tvOption2"
+        app:layout_constraintTop_toTopOf="@+id/tvOption2" />
+
+    <TextView
+        android:id="@+id/tvOption4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tvOption3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvOption3"
+        app:layout_constraintTop_toTopOf="@+id/tvOption3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
