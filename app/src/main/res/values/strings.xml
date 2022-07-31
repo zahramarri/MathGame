@@ -2,4 +2,6 @@
     <string name="app_name">Math Game</string>
     <string name="btnStartText">start</string>
     <string name="btnRollDice">Roll the dice</string>
+    <string name="tvQuestionMarkText">\?</string>
+    <string name="tvMathOperatorText">/</string>
 </resources>

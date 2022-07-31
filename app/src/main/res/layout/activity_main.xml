@@ -5,31 +5,93 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/joel_abraham_8rryjg26wr4_unsplash"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteX="-25dp"
+    tools:layout_editor_absoluteY="0dp">
 
     <Button
         android:id="@+id/btnStart"
-        android:textSize="32sp"
-        android:text="@string/btnStartText"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/btnStartText"
+        android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:visibility="gone"/>
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
 
     <Button
         android:id="@+id/btnRollDice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.65"
         android:text="@string/btnRollDice"
-        tools:visibility="gone"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65"
+        tools:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvDiceA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTintMode="add"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvMathOperator"
+        app:layout_constraintEnd_toStartOf="@+id/tvMathOperator"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvMathOperator"
+        tools:text="dice A"
+        tools:textColor="#FFFFFF"
+        tools:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvDiceB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvQuestionMark"
+        app:layout_constraintEnd_toStartOf="@+id/tvQuestionMark"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvMathOperator"
+        app:layout_constraintTop_toTopOf="@+id/tvQuestionMark"
+        tools:text="dice B"
+        tools:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvMathOperator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvMathOperatorText"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDiceB"
+        app:layout_constraintEnd_toStartOf="@+id/tvDiceB"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvDiceA"
+        app:layout_constraintTop_toTopOf="@+id/tvDiceB"
+        tools:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvQuestionMark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvQuestionMarkText"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDiceB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvDiceB"
+        app:layout_constraintTop_toTopOf="@+id/tvDiceB"
+        tools:layout_editor_absoluteY="249dp"
+        tools:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
