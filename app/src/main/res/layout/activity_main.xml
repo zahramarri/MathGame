@@ -13,57 +13,58 @@
         android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:backgroundTint="@color/blue"
         android:text="@string/btnStartText"
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnRollDice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
         android:text="@string/btnRollDice"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.64"
-        tools:visibility="gone" />
+        app:layout_constraintVertical_bias="0.64" />
 
     <TextView
         android:id="@+id/tvDiceA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTintMode="add"
+        android:text="@string/tvDiceAText"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/tvMathOperator"
         app:layout_constraintEnd_toStartOf="@+id/tvMathOperator"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvMathOperator"
-        tools:text="dice A"
-        tools:textColor="#FFFFFF"
-        tools:visibility="gone" />
+        app:layout_constraintTop_toTopOf="@+id/tvMathOperator" />
 
     <TextView
         android:id="@+id/tvDiceB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/tvDiceBText"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/tvQuestionMark"
         app:layout_constraintEnd_toStartOf="@+id/tvQuestionMark"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvMathOperator"
         app:layout_constraintTop_toTopOf="@+id/tvQuestionMark"
-        tools:text="dice B"
-        tools:visibility="gone" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvMathOperator"
@@ -72,12 +73,12 @@
         android:text="@string/divisionSignText"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/tvDiceB"
         app:layout_constraintEnd_toStartOf="@+id/tvDiceB"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvDiceA"
-        app:layout_constraintTop_toTopOf="@+id/tvDiceB"
-        tools:visibility="gone" />
+        app:layout_constraintTop_toTopOf="@+id/tvDiceB" />
 
     <TextView
         android:id="@+id/tvQuestionMark"
@@ -86,19 +87,22 @@
         android:text="@string/tvQuestionMarkText"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDiceB"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvDiceB"
-        app:layout_constraintTop_toTopOf="@+id/tvDiceB"
-        tools:layout_editor_absoluteY="249dp"
-        tools:visibility="gone" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.36" />
 
     <TextView
         android:id="@+id/tvOption1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tvOption2"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -112,6 +116,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/tvOption1"
         app:layout_constraintEnd_toStartOf="@id/tvOption3"
         app:layout_constraintStart_toEndOf="@+id/tvOption1"
@@ -122,6 +129,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/tvOption2"
         app:layout_constraintEnd_toStartOf="@id/tvOption4"
         app:layout_constraintStart_toEndOf="@id/tvOption2"
@@ -131,9 +141,24 @@
         android:id="@+id/tvOption4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/tvOption3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvOption3"
         app:layout_constraintTop_toTopOf="@+id/tvOption3" />
+
+    <TextView
+        android:id="@+id/tvTotalScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/tvTotalScoreText"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

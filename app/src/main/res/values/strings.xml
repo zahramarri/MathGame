@@ -7,4 +7,7 @@
     <string name="multiplicationSignText">\u00D7</string>
     <string name="additionSignText">+</string>
     <string name="subtractionSignText">-</string>
+    <string name="tvDiceAText">Dice A</string>
+    <string name="tvDiceBText">Dice B</string>
+    <string name="tvTotalScoreText">0</string>
 </resources>
