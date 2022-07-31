@@ -3,5 +3,8 @@
     <string name="btnStartText">start</string>
     <string name="btnRollDice">Roll the dice</string>
     <string name="tvQuestionMarkText">\?</string>
-    <string name="tvMathOperatorText">/</string>
+    <string name="divisionSignText">\u00F7</string>
+    <string name="multiplicationSignText">\u00D7</string>
+    <string name="additionSignText">+</string>
+    <string name="subtractionSignText">-</string>
 </resources>

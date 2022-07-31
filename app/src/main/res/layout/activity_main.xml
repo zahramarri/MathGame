@@ -69,7 +69,7 @@
         android:id="@+id/tvMathOperator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tvMathOperatorText"
+        android:text="@string/divisionSignText"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvDiceB"
