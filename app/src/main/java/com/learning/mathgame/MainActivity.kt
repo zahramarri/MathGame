@@ -14,6 +14,15 @@ class MainActivity : AppCompatActivity() {
         binding.btnStart.setOnClickListener {
             setPrimaryViewsState()
         }
+
+        binding.btnRollDice.setOnClickListener {
+            setDicesText()
+        }
+    }
+
+    private fun setDicesText() {
+        binding.tvDiceA.text = pickRandomA().toString()
+        binding.tvDiceB.text = pickRandomB().toString()
     }
 
     private fun setPrimaryViewsState() {
@@ -23,5 +32,13 @@ class MainActivity : AppCompatActivity() {
         binding.tvDiceB.visibility = View.VISIBLE
         binding.tvMathOperator.visibility = View.VISIBLE
         binding.tvQuestionMark.visibility = View.VISIBLE
+    }
+
+    private fun pickRandomA(): Int {
+        return (1..100).random()
+    }
+
+    private fun pickRandomB(): Int {
+        return (1..10).random()
     }
 }
