@@ -11,4 +11,7 @@
     <string name="tvDiceAText">Dice A</string>
     <string name="tvDiceBText">Dice B</string>
     <string name="tvTotalScoreText">0</string>
+    <string name="tvTotalScore2Text">Your Score:</string>
+    <string name="btnNewGameText">new game</string>
+    <string name="btnExitText">exit</string>
 </resources>
