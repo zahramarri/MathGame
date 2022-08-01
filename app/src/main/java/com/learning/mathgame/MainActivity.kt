@@ -1,10 +1,13 @@
 package com.learning.mathgame
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import com.learning.mathgame.databinding.ActivityMainBinding
+
+const val EXTRA_MESSAGE = "total score"
 
 class MainActivity : AppCompatActivity() {
     var diceA = 0
@@ -57,6 +60,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun startActivity2() {
+        val intent = Intent(this, Activity2::class.java)
+        intent.putExtra(EXTRA_MESSAGE, totalScore)
+        startActivity(intent)
+    }
+
     private fun resetBackgroundColor() {
         binding.tvOption1.setBackgroundColor(0)
         binding.tvOption2.setBackgroundColor(0)
@@ -65,9 +74,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun resetBtnRollDice(gameRound: Int) {
-        if (gameRound < 5) {
+        if (gameRound < 6) {
             binding.btnRollDice.visibility = View.VISIBLE
             binding.btnRollDice.text = getString(R.string.btnRollDice2)
+        } else {
+            startActivity2()
         }
     }
 
