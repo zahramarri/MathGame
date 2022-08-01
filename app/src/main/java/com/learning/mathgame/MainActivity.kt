@@ -3,6 +3,8 @@ package com.learning.mathgame
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import android.widget.Toast
 import com.learning.mathgame.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -10,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     var diceB = 0
     private var correctOption = 0.0
     private val wrongOptionList = mutableListOf<Double>()
+    private lateinit var correctOptionPlace: TextView
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -24,7 +27,50 @@ class MainActivity : AppCompatActivity() {
             setDicesText()
             setSecondaryViewsVisibility()
             setOptionsText()
+            makeOptionsClickable()
         }
+
+        binding.tvOption1.setOnClickListener {
+            setBackgroundColorBasedOnUserAnswer(it)
+            makeOptionsNonClickable()
+        }
+
+        binding.tvOption2.setOnClickListener {
+            setBackgroundColorBasedOnUserAnswer(it)
+            makeOptionsNonClickable()
+        }
+
+        binding.tvOption3.setOnClickListener {
+            setBackgroundColorBasedOnUserAnswer(it)
+            makeOptionsNonClickable()
+        }
+
+        binding.tvOption4.setOnClickListener {
+            setBackgroundColorBasedOnUserAnswer(it)
+            makeOptionsNonClickable()
+        }
+    }
+
+    private fun setBackgroundColorBasedOnUserAnswer(tvOption: View) {
+        if (tvOption == correctOptionPlace) {
+            tvOption.setBackgroundColor(resources.getColor(R.color.green))
+        } else {
+            tvOption.setBackgroundColor(resources.getColor(R.color.red))
+        }
+    }
+
+    private fun makeOptionsClickable() {
+        binding.tvOption1.isClickable = true
+        binding.tvOption2.isClickable = true
+        binding.tvOption3.isClickable = true
+        binding.tvOption4.isClickable = true
+    }
+
+    private fun makeOptionsNonClickable() {
+        binding.tvOption1.isClickable = false
+        binding.tvOption2.isClickable = false
+        binding.tvOption3.isClickable = false
+        binding.tvOption4.isClickable = false
     }
 
     private fun produceOptions() {
@@ -43,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             binding.tvOption3,
             binding.tvOption4
         )
-        val correctOptionPlace = tvOptionList.random()
+        correctOptionPlace = tvOptionList.random()
         correctOptionPlace.text = correctOption.toString()
         tvOptionList.remove(correctOptionPlace)
 
