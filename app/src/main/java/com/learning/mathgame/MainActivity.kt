@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     private var correctOption = 0.0
     private lateinit var correctOptionPlace: TextView
     var totalScore = 0
+    var gameRound = 1
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -28,30 +29,31 @@ class MainActivity : AppCompatActivity() {
             setOptionsText()
             makeOptionsClickable()
             resetBackgroundColor()
+            gameRound ++
         }
 
         binding.tvOption1.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
-            resetBtnRollDice()
+            resetBtnRollDice(gameRound)
         }
 
         binding.tvOption2.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
-            resetBtnRollDice()
+            resetBtnRollDice(gameRound)
         }
 
         binding.tvOption3.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
-            resetBtnRollDice()
+            resetBtnRollDice(gameRound)
         }
 
         binding.tvOption4.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
-            resetBtnRollDice()
+            resetBtnRollDice(gameRound)
         }
     }
 
@@ -62,9 +64,11 @@ class MainActivity : AppCompatActivity() {
         binding.tvOption4.setBackgroundColor(0)
     }
 
-    private fun resetBtnRollDice() {
-        binding.btnRollDice.visibility = View.VISIBLE
-        binding.btnRollDice.text = getString(R.string.btnRollDice2)
+    private fun resetBtnRollDice(gameRound: Int) {
+        if (gameRound < 5) {
+            binding.btnRollDice.visibility = View.VISIBLE
+            binding.btnRollDice.text = getString(R.string.btnRollDice2)
+        }
     }
 
     private fun checkUserAnswer(tvOption: View) {
