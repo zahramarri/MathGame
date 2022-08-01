@@ -10,7 +10,6 @@ class MainActivity : AppCompatActivity() {
     var diceA = 0
     var diceB = 0
     private var correctOption = 0.0
-    private val wrongOptionList = mutableListOf<Double>()
     private lateinit var correctOptionPlace: TextView
     var totalScore = 0
     private lateinit var binding: ActivityMainBinding
@@ -110,16 +109,18 @@ class MainActivity : AppCompatActivity() {
         binding.tvOption4.isClickable = false
     }
 
-    private fun produceOptions() {
+    private fun produceOptions(): MutableList<Double> {
         correctOption = String.format("%.1f", diceA.toDouble() / diceB.toDouble()).toDouble()
+        val wrongOptionList = mutableListOf<Double>()
         val smallNumberList = mutableListOf(0.1, 0.3, 0.5)
         for (number in smallNumberList) {
             wrongOptionList.add(String.format("%.1f", correctOption + number).toDouble())
         }
+        return wrongOptionList
     }
 
     private fun setOptionsText() {
-        produceOptions()
+        val wrongOptionList = produceOptions()
         val tvOptionList = mutableListOf(
             binding.tvOption1,
             binding.tvOption2,
