@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import com.learning.mathgame.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     private var correctOption = 0.0
     private val wrongOptionList = mutableListOf<Double>()
     private lateinit var correctOptionPlace: TextView
+    var totalScore = 0
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -31,32 +31,52 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.tvOption1.setOnClickListener {
-            setBackgroundColorBasedOnUserAnswer(it)
+            checkUserAnswer(it)
             makeOptionsNonClickable()
         }
 
         binding.tvOption2.setOnClickListener {
-            setBackgroundColorBasedOnUserAnswer(it)
+            checkUserAnswer(it)
             makeOptionsNonClickable()
         }
 
         binding.tvOption3.setOnClickListener {
-            setBackgroundColorBasedOnUserAnswer(it)
+            checkUserAnswer(it)
             makeOptionsNonClickable()
         }
 
         binding.tvOption4.setOnClickListener {
-            setBackgroundColorBasedOnUserAnswer(it)
+            checkUserAnswer(it)
             makeOptionsNonClickable()
         }
     }
 
-    private fun setBackgroundColorBasedOnUserAnswer(tvOption: View) {
+    private fun checkUserAnswer(tvOption: View) {
         if (tvOption == correctOptionPlace) {
+            increaseTotalScore()
+            setBackgroundColorBasedOnAnswer(true, tvOption)
+        } else {
+            decreaseTotalScore()
+            setBackgroundColorBasedOnAnswer(false, tvOption)
+        }
+    }
+
+    private fun setBackgroundColorBasedOnAnswer(answer: Boolean, tvOption: View) {
+        if (answer) {
             tvOption.setBackgroundColor(resources.getColor(R.color.green))
         } else {
             tvOption.setBackgroundColor(resources.getColor(R.color.red))
         }
+    }
+
+    private fun decreaseTotalScore() {
+        totalScore -= 2
+        binding.tvTotalScore.text = totalScore.toString()
+    }
+
+    private fun increaseTotalScore() {
+        totalScore += 5
+        binding.tvTotalScore.text = totalScore.toString()
     }
 
     private fun makeOptionsClickable() {
