@@ -28,27 +28,44 @@ class MainActivity : AppCompatActivity() {
             setSecondaryViewsVisibility()
             setOptionsText()
             makeOptionsClickable()
+            resetBackgroundColor()
         }
 
         binding.tvOption1.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
+            resetBtnRollDice()
         }
 
         binding.tvOption2.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
+            resetBtnRollDice()
         }
 
         binding.tvOption3.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
+            resetBtnRollDice()
         }
 
         binding.tvOption4.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
+            resetBtnRollDice()
         }
+    }
+
+    private fun resetBackgroundColor() {
+        binding.tvOption1.setBackgroundColor(0)
+        binding.tvOption2.setBackgroundColor(0)
+        binding.tvOption3.setBackgroundColor(0)
+        binding.tvOption4.setBackgroundColor(0)
+    }
+
+    private fun resetBtnRollDice() {
+        binding.btnRollDice.visibility = View.VISIBLE
+        binding.btnRollDice.text = getString(R.string.btnRollDice2)
     }
 
     private fun checkUserAnswer(tvOption: View) {

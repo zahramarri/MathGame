@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Math Game</string>
     <string name="btnStartText">start</string>
-    <string name="btnRollDice">Roll the dice</string>
+    <string name="btnRollDice1">Roll the dice</string>
+    <string name="btnRollDice2">Roll again</string>
     <string name="tvQuestionMarkText">\?</string>
     <string name="divisionSignText">\u00F7</string>
     <string name="multiplicationSignText">\u00D7</string>
