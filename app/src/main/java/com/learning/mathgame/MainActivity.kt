@@ -1,4 +1,5 @@
 package com.learning.mathgame
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -7,6 +8,8 @@ import com.learning.mathgame.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     var diceA = 0
     var diceB = 0
+    private var correctOption = 0.0
+    private val wrongOptionList = mutableListOf<Double>()
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -20,26 +23,41 @@ class MainActivity : AppCompatActivity() {
         binding.btnRollDice.setOnClickListener {
             setDicesText()
             setSecondaryViewsVisibility()
-            setOptions()
+            setOptionsText()
         }
     }
 
-    private fun setOptions() {
-        val optionSet = mutableListOf(binding.tvOption1, binding.tvOption2, binding.tvOption3, binding.tvOption4)
-        val correctAnswerPlace = optionSet.random()
-        val correctOption = String.format("%.1f", diceA.toDouble()/diceB.toDouble()).toDouble()
-        val littleNumber = mutableListOf(0.1, 0.3, 0.5, 0.7)
-        optionSet.remove(correctAnswerPlace)
-        correctAnswerPlace.text = correctOption.toString()
+    private fun produceOptions() {
+        correctOption = String.format("%.1f", diceA.toDouble() / diceB.toDouble()).toDouble()
+        val smallNumberList = mutableListOf(0.1, 0.3, 0.5)
+        for (number in smallNumberList) {
+            wrongOptionList.add(String.format("%.1f", correctOption + number).toDouble())
+        }
+    }
 
-        for ((i, option) in optionSet.withIndex()) {
-            option.text = (correctOption + littleNumber[i]).toString()
+    private fun setOptionsText() {
+        produceOptions()
+        val tvOptionList = mutableListOf(
+            binding.tvOption1,
+            binding.tvOption2,
+            binding.tvOption3,
+            binding.tvOption4
+        )
+        val correctOptionPlace = tvOptionList.random()
+        correctOptionPlace.text = correctOption.toString()
+        tvOptionList.remove(correctOptionPlace)
+
+        for ((i, tvOption) in tvOptionList.withIndex()) {
+            tvOption.text = wrongOptionList[i].toString()
         }
     }
 
     private fun setSecondaryViewsVisibility() {
         binding.btnRollDice.visibility = View.GONE
-
+        binding.tvDiceA.visibility = View.VISIBLE
+        binding.tvDiceB.visibility = View.VISIBLE
+        binding.tvMathOperator.visibility = View.VISIBLE
+        binding.tvQuestionMark.visibility = View.VISIBLE
         binding.tvOption1.visibility = View.VISIBLE
         binding.tvOption2.visibility = View.VISIBLE
         binding.tvOption3.visibility = View.VISIBLE
@@ -53,11 +71,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setPrimaryViewsVisibility() {
         binding.btnStart.visibility = View.GONE
-
-        binding.tvDiceA.visibility = View.VISIBLE
-        binding.tvDiceB.visibility = View.VISIBLE
-        binding.tvMathOperator.visibility = View.VISIBLE
-        binding.tvQuestionMark.visibility = View.VISIBLE
         binding.btnRollDice.visibility = View.VISIBLE
     }
 
