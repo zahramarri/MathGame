@@ -4,37 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/joel2"
     tools:context=".Activity2">
 
     <TextView
         android:gravity="center"
-        app:layout_constraintDimensionRatio="1:1"
+        android:layout_marginHorizontal="16dp"
         android:id="@+id/tvTotalScore2"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/blue"
-        android:padding="8dp"
-        android:text="@string/tvTotalScore2Text"
+        android:padding="16dp"
         android:textColor="@color/white"
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintVertical_bias="0.24" />
 
     <Button
         android:id="@+id/btnNewGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
         android:backgroundTint="@color/green"
         android:padding="8dp"
         android:text="@string/btnNewGameText"
         android:textSize="24sp"
+        app:layout_constraintVertical_bias="0.72"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tvTotalScore2"
         app:layout_constraintStart_toStartOf="@+id/tvTotalScore2"
-        app:layout_constraintTop_toBottomOf="@+id/tvTotalScore2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnExit"
