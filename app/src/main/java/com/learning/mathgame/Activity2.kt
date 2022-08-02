@@ -37,6 +37,6 @@ class Activity2 : AppCompatActivity() {
 
     private fun initViews() {
         val totalScore = intent.getIntExtra(EXTRA_MESSAGE, 0)
-        binding.tvTotalScore2.setText("SCORE: $totalScore")
+        binding.tvTotalScore2.text = "SCORE: $totalScore"
     }
 }
