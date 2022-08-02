@@ -1,8 +1,8 @@
 package com.learning.mathgame
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.learning.mathgame.databinding.Activity2Binding
 
 class Activity2 : AppCompatActivity() {
@@ -17,6 +17,17 @@ class Activity2 : AppCompatActivity() {
         binding.btnNewGame.setOnClickListener {
             startMainActivity()
         }
+
+        binding.btnExit.setOnClickListener {
+            exitApp()
+        }
+    }
+
+    private fun exitApp() {
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_HOME)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 
     private fun startMainActivity() {
