@@ -1,5 +1,6 @@
 package com.learning.mathgame
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.learning.mathgame.databinding.Activity2Binding
@@ -12,6 +13,15 @@ class Activity2 : AppCompatActivity() {
         setContentView(binding.root)
 
         initViews()
+
+        binding.btnNewGame.setOnClickListener {
+            startMainActivity()
+        }
+    }
+
+    private fun startMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     private fun initViews() {
