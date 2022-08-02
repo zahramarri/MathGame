@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.learning.mathgame.databinding.Activity2Binding
+import kotlin.system.exitProcess
 
 class Activity2 : AppCompatActivity() {
     lateinit var binding: Activity2Binding
@@ -24,10 +25,9 @@ class Activity2 : AppCompatActivity() {
     }
 
     private fun exitApp() {
-        val intent = Intent(Intent.ACTION_MAIN)
-        intent.addCategory(Intent.CATEGORY_HOME)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
+        moveTaskToBack(true)
+        android.os.Process.killProcess(android.os.Process.myPid())
+        exitProcess(1)
     }
 
     private fun startMainActivity() {
