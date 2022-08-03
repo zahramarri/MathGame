@@ -3,6 +3,7 @@ package com.learning.mathgame
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import android.widget.TextView
 import com.learning.mathgame.databinding.ActivityMainBinding
@@ -58,6 +59,26 @@ class MainActivity : AppCompatActivity() {
             makeOptionsNonClickable()
             resetBtnRollDice(gameRound)
         }
+
+        binding.tvAdditionOperator.setOnClickListener {
+            setOperator(binding.tvAdditionOperator)
+        }
+
+        binding.tvSubtractionOperator.setOnClickListener {
+            setOperator(binding.tvSubtractionOperator)
+        }
+
+        binding.tvMultiplicationOperator.setOnClickListener {
+            setOperator(binding.tvMultiplicationOperator)
+        }
+
+        binding.tvDivisionOperator.setOnClickListener {
+            setOperator(binding.tvDivisionOperator)
+        }
+    }
+
+    private fun setOperator(textView: TextView) {
+        binding.tvMathOperator.text = textView.text
     }
 
     private fun startActivity2() {
