@@ -16,4 +16,7 @@
     <string name="tvChooseMathOperator">Operator:</string>
     <string name="tvDiceARange">Dice A Range:</string>
     <string name="tvDiceBRange">Dice B Range:</string>
+    <string name="edtDiceRangeStart">1</string>
+    <string name="edtDiceARangeEndText">100</string>
+    <string name="edtDiceBRangeEndText">10</string>
 </resources>
