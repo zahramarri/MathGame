@@ -10,11 +10,11 @@
     tools:layout_editor_absoluteY="0dp">
 
     <Button
-        android:padding="32dp"
         android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:backgroundTint="@color/blue"
+        android:padding="32dp"
         android:text="@string/btnStartText"
         android:textColor="@color/white"
         android:textSize="32sp"
@@ -24,11 +24,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:padding="16dp"
         android:id="@+id/btnRollDice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/blue"
+        android:padding="16dp"
         android:text="@string/btnRollDice1"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -40,10 +40,10 @@
         app:layout_constraintVertical_bias="0.799" />
 
     <TextView
-        android:padding="4dp"
         android:id="@+id/tvDiceA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="4dp"
         android:text="@string/tvDiceAText"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -55,10 +55,10 @@
         app:layout_constraintTop_toTopOf="@+id/tvMathOperator" />
 
     <TextView
-        android:padding="4dp"
         android:id="@+id/tvDiceB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="4dp"
         android:text="@string/tvDiceBText"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -71,10 +71,10 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:padding="4dp"
         android:id="@+id/tvMathOperator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="4dp"
         android:text="@string/divisionSignText"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -86,10 +86,10 @@
         app:layout_constraintTop_toTopOf="@+id/tvDiceB" />
 
     <TextView
-        android:padding="4dp"
         android:id="@+id/tvQuestionMark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="4dp"
         android:text="@string/tvQuestionMarkText"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -102,11 +102,11 @@
         app:layout_constraintVertical_bias="0.32" />
 
     <TextView
-        android:padding="8dp"
         android:id="@+id/tvOption1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:padding="8dp"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:visibility="invisible"
@@ -119,11 +119,11 @@
         app:layout_constraintVertical_bias="0.68" />
 
     <TextView
-        android:padding="8dp"
         android:id="@+id/tvOption2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:padding="8dp"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:visibility="invisible"
@@ -133,11 +133,11 @@
         app:layout_constraintTop_toTopOf="@+id/tvOption1" />
 
     <TextView
-        android:padding="8dp"
         android:id="@+id/tvOption3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:padding="8dp"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:visibility="invisible"
@@ -147,10 +147,10 @@
         app:layout_constraintTop_toTopOf="@+id/tvOption2" />
 
     <TextView
-        android:padding="8dp"
         android:id="@+id/tvOption4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:visibility="invisible"
@@ -169,6 +169,15 @@
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_baseline_settings_24"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
