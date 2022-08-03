@@ -13,4 +13,7 @@
     <string name="tvTotalScoreText">0</string>
     <string name="btnNewGameText">new game</string>
     <string name="btnExitText">exit</string>
+    <string name="tvChooseMathOperator">Operator:</string>
+    <string name="tvDiceARange">Dice A Range:</string>
+    <string name="tvDiceBRange">Dice B Range:</string>
 </resources>

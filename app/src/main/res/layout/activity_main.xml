@@ -11,8 +11,8 @@
 
     <Button
         android:id="@+id/btnStart"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/blue"
         android:padding="32dp"
         android:text="@string/btnStartText"
@@ -171,13 +171,170 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <TextView
+        android:id="@+id/tvDiceARange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/tvDiceARange"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/tvDiceBRange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvDiceBRange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:text="@string/tvDiceBRange"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/tvChooseMathOperator"
+        app:layout_constraintEnd_toEndOf="@id/tvDiceARange"
+        app:layout_constraintStart_toStartOf="@id/tvDiceARange"
+        app:layout_constraintTop_toBottomOf="@id/tvDiceARange" />
+
+    <EditText
+        android:id="@+id/edtDiceARangeStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/ic_baseline_settings_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvDiceARange"
+        app:layout_constraintStart_toEndOf="@id/tvDiceARange"
+        app:layout_constraintTop_toTopOf="@id/tvDiceARange" />
+
+    <TextView
+        android:id="@+id/tvTo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/subtractionSignText"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/edtDiceARangeStart"
+        app:layout_constraintEnd_toStartOf="@id/edtDiceARangeEnd"
+        app:layout_constraintStart_toEndOf="@id/edtDiceARangeStart"
+        app:layout_constraintTop_toTopOf="@id/edtDiceARangeStart" />
+
+    <TextView
+        android:id="@+id/tvTo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/subtractionSignText"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/edtDiceBRangeStart"
+        app:layout_constraintEnd_toStartOf="@id/edtDiceBRangeEnd"
+        app:layout_constraintStart_toEndOf="@id/edtDiceBRangeStart"
+        app:layout_constraintTop_toTopOf="@id/edtDiceBRangeStart" />
+
+    <EditText
+        android:id="@+id/edtDiceARangeEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvDiceARange"
+        app:layout_constraintStart_toEndOf="@id/edtDiceARangeStart"
+        app:layout_constraintTop_toTopOf="@id/tvDiceARange" />
+
+    <EditText
+        android:id="@+id/edtDiceBRangeStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvDiceBRange"
+        app:layout_constraintStart_toEndOf="@id/tvDiceBRange"
+        app:layout_constraintTop_toTopOf="@id/tvDiceBRange" />
+
+    <EditText
+        android:id="@+id/edtDiceBRangeEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvDiceBRange"
+        app:layout_constraintStart_toEndOf="@id/edtDiceBRangeStart"
+        app:layout_constraintTop_toTopOf="@id/tvDiceBRange" />
+
+    <TextView
+        android:id="@+id/tvChooseMathOperator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/tvChooseMathOperator"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/btnStart"
+        app:layout_constraintStart_toStartOf="@id/tvDiceARange"
+        app:layout_constraintTop_toBottomOf="@id/tvDiceARange" />
+
+    <TextView
+        android:id="@+id/tvAdditionOperator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/additionSignText"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvChooseMathOperator"
+        app:layout_constraintStart_toEndOf="@id/tvChooseMathOperator"
+        app:layout_constraintTop_toTopOf="@id/tvChooseMathOperator" />
+
+    <TextView
+        android:id="@+id/tvSubtractionOperator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/subtractionSignText"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvChooseMathOperator"
+        app:layout_constraintStart_toEndOf="@id/tvAdditionOperator"
+        app:layout_constraintTop_toTopOf="@id/tvChooseMathOperator" />
+
+    <TextView
+        android:id="@+id/tvMultiplicationOperator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/multiplicationSignText"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvChooseMathOperator"
+        app:layout_constraintStart_toEndOf="@id/tvSubtractionOperator"
+        app:layout_constraintTop_toTopOf="@id/tvChooseMathOperator" />
+
+    <TextView
+        android:id="@+id/tvDivisionOperator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/divisionSignText"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvChooseMathOperator"
+        app:layout_constraintStart_toEndOf="@id/tvMultiplicationOperator"
+        app:layout_constraintTop_toTopOf="@id/tvChooseMathOperator" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
