@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var correctOptionPlace: TextView
     var totalScore = 0
     var gameRound = 1
+    var diceARange = (1..100)
+    var diceBRange = (1..10)
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -24,7 +26,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnStart.setOnClickListener {
-            setPrimaryViewsVisibility()
+            if (controlDicesRange()) {
+                setPrimaryViewsVisibility()
+            }
         }
 
         binding.btnRollDice.setOnClickListener {
@@ -33,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             setOptionsText()
             makeOptionsClickable()
             resetBackgroundColor()
-            gameRound ++
+            gameRound++
         }
 
         binding.tvOption1.setOnClickListener {
@@ -75,6 +79,68 @@ class MainActivity : AppCompatActivity() {
         binding.tvDivisionOperator.setOnClickListener {
             setOperator(binding.tvDivisionOperator)
         }
+    }
+
+    private fun controlDicesRange(): Boolean {
+        var isOk1 = false
+        var isOk2 = false
+        if (binding.edtDiceARangeStart.text.toString().isNotBlank()) {
+            if ((binding.edtDiceARangeStart.text.toString().length == 1) ||
+                binding.edtDiceARangeStart.text.toString().length > 1 && binding.edtDiceARangeStart.text.toString()
+                    .first() != '0'
+            ) {
+                if ((binding.edtDiceARangeEnd.text.toString().length == 1) ||
+                    binding.edtDiceARangeEnd.text.toString().length > 1 && binding.edtDiceARangeEnd.text.toString()
+                        .first() != '0'
+                ) {
+                    if (binding.edtDiceARangeStart.text.toString()
+                            .toInt() < binding.edtDiceARangeEnd.text.toString().toInt()
+                    ) {
+                        diceARange = (binding.edtDiceARangeStart.text.toString()
+                            .toInt()..binding.edtDiceARangeEnd.text.toString().toInt())
+                        isOk1 = true
+                    } else {
+                        binding.edtDiceARangeEnd.error = "Invalid Range"
+                    }
+                } else {
+                    binding.edtDiceARangeEnd.error = "Invalid Number"
+                }
+            } else {
+                binding.edtDiceARangeStart.error = "Invalid Number"
+            }
+        } else {
+            binding.edtDiceARangeStart.error = "Invalid Input"
+        }
+
+        if (binding.edtDiceBRangeStart.text.toString().isNotBlank()) {
+            if ((binding.edtDiceBRangeStart.text.toString().length == 1) ||
+                binding.edtDiceBRangeStart.text.toString().length > 1 && binding.edtDiceBRangeStart.text.toString()
+                    .first() != '0'
+            ) {
+                if ((binding.edtDiceBRangeEnd.text.toString().length == 1) ||
+                    binding.edtDiceBRangeEnd.text.toString().length > 1 && binding.edtDiceBRangeEnd.text.toString()
+                        .first() != '0'
+                ) {
+                    if (binding.edtDiceBRangeStart.text.toString()
+                            .toInt() < binding.edtDiceBRangeEnd.text.toString().toInt()
+                    ) {
+                        diceARange = (binding.edtDiceBRangeStart.text.toString()
+                            .toInt()..binding.edtDiceBRangeEnd.text.toString().toInt())
+                        isOk2 = true
+                    } else {
+                        binding.edtDiceBRangeEnd.error = "Invalid Range"
+                    }
+                } else {
+                    binding.edtDiceBRangeEnd.error = "Invalid Number"
+                }
+            } else {
+                binding.edtDiceBRangeStart.error = "Invalid Number"
+            }
+        } else {
+            binding.edtDiceBRangeStart.error = "Invalid Input"
+        }
+
+        return (isOk1 && isOk2)
     }
 
     private fun setOperator(textView: TextView) {
