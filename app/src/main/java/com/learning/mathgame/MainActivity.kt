@@ -257,6 +257,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun setPrimaryViewsVisibility() {
         binding.btnStart.visibility = View.GONE
+        binding.tvSubtractionOperator.visibility = View.GONE
+        binding.tvAdditionOperator.visibility = View.GONE
+        binding.tvMultiplicationOperator.visibility = View.GONE
+        binding.tvDivisionOperator.visibility = View.GONE
+        binding.tvChooseMathOperator.visibility = View.GONE
+        binding.tvDiceARange.visibility = View.GONE
+        binding.tvDiceBRange.visibility = View.GONE
+        binding.tvTo1.visibility = View.GONE
+        binding.tvTo2.visibility = View.GONE
+        binding.edtDiceBRangeStart.visibility = View.GONE
+        binding.edtDiceBRangeEnd.visibility = View.GONE
+        binding.edtDiceARangeStart.visibility = View.GONE
+        binding.edtDiceARangeEnd.visibility = View.GONE
         binding.btnRollDice.visibility = View.VISIBLE
     }
 
