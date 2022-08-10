@@ -344,5 +344,17 @@
         app:layout_constraintStart_toEndOf="@id/tvMultiplicationOperator"
         app:layout_constraintTop_toTopOf="@id/tvChooseMathOperator" />
 
+    <TextView
+        android:id="@+id/tvCountDownTimer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvTotalScore"
+        android:textSize="24sp"
+        android:layout_margin="8dp"
+        android:textColor="@color/white"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

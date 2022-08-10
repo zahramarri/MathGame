@@ -3,7 +3,7 @@ package com.learning.mathgame
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
+import android.os.CountDownTimer
 import android.view.View
 import android.widget.TextView
 import com.learning.mathgame.databinding.ActivityMainBinding
@@ -11,19 +11,32 @@ import com.learning.mathgame.databinding.ActivityMainBinding
 const val EXTRA_MESSAGE = "total score"
 
 class MainActivity : AppCompatActivity() {
-    var diceA = 0
-    var diceB = 0
+    private var diceA = 0
+    private var diceB = 0
     private var correctOption = 0.0
     private lateinit var correctOptionPlace: TextView
-    var totalScore = 0
-    var gameRound = 1
-    var diceARange = (1..100)
-    var diceBRange = (1..10)
-    var operator = "\u00F7"
-    var wrongOptionList = mutableListOf<Double>()
+    private var totalScore = 0
+    private var gameRound = 1
+    private var diceARange = (1..100)
+    private var diceBRange = (1..10)
+    private var operator = "\u00F7"
+    private lateinit var countDownTimer: CountDownTimer
+    private var wrongOptionList = mutableListOf<Double>()
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
+        countDownTimer = object : CountDownTimer(10000, 1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                binding.tvCountDownTimer.text = "Seconds Remaining: " + millisUntilFinished / 1000
+            }
+
+            override fun onFinish() {
+                binding.tvCountDownTimer.text = "Done!"
+                makeOptionsNonClickable()
+                resetBtnRollDice(gameRound)
+            }
+        }
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -40,30 +53,35 @@ class MainActivity : AppCompatActivity() {
             makeOptionsClickable()
             resetBackgroundColor()
             gameRound++
+            countDownTimer.start()
         }
 
         binding.tvOption1.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
             resetBtnRollDice(gameRound)
+            countDownTimer.cancel()
         }
 
         binding.tvOption2.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
             resetBtnRollDice(gameRound)
+            countDownTimer.cancel()
         }
 
         binding.tvOption3.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
             resetBtnRollDice(gameRound)
+            countDownTimer.cancel()
         }
 
         binding.tvOption4.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
             resetBtnRollDice(gameRound)
+            countDownTimer.cancel()
         }
 
         binding.tvAdditionOperator.setOnClickListener {
