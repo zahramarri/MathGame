@@ -231,6 +231,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val smallNumberList = mutableListOf(0.1, 0.3, 0.5)
+        wrongOptionList.clear()
         for (number in smallNumberList) {
             wrongOptionList.add(String.format("%.1f", correctOption + number).toDouble())
         }
