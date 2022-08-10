@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     var gameRound = 1
     var diceARange = (1..100)
     var diceBRange = (1..10)
+    lateinit var operator: CharSequence
+    var wrongOptionList = mutableListOf<Double>()
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -96,8 +98,7 @@ class MainActivity : AppCompatActivity() {
                     if (binding.edtDiceARangeStart.text.toString()
                             .toInt() < binding.edtDiceARangeEnd.text.toString().toInt()
                     ) {
-                        diceARange = (binding.edtDiceARangeStart.text.toString()
-                            .toInt()..binding.edtDiceARangeEnd.text.toString().toInt())
+                        setDiceARange()
                         isOk1 = true
                     } else {
                         binding.edtDiceARangeEnd.error = "Invalid Range"
@@ -124,8 +125,7 @@ class MainActivity : AppCompatActivity() {
                     if (binding.edtDiceBRangeStart.text.toString()
                             .toInt() < binding.edtDiceBRangeEnd.text.toString().toInt()
                     ) {
-                        diceARange = (binding.edtDiceBRangeStart.text.toString()
-                            .toInt()..binding.edtDiceBRangeEnd.text.toString().toInt())
+                        setDiceBRange()
                         isOk2 = true
                     } else {
                         binding.edtDiceBRangeEnd.error = "Invalid Range"
@@ -143,8 +143,19 @@ class MainActivity : AppCompatActivity() {
         return (isOk1 && isOk2)
     }
 
+    private fun setDiceBRange() {
+        diceBRange = (binding.edtDiceBRangeStart.text.toString()
+            .toInt()..binding.edtDiceBRangeEnd.text.toString().toInt())
+    }
+
+    private fun setDiceARange() {
+        diceARange = (binding.edtDiceARangeStart.text.toString()
+            .toInt()..binding.edtDiceARangeEnd.text.toString().toInt())
+    }
+
     private fun setOperator(textView: TextView) {
         binding.tvMathOperator.text = textView.text
+        operator = textView.text
     }
 
     private fun startActivity2() {
@@ -211,18 +222,22 @@ class MainActivity : AppCompatActivity() {
         binding.tvOption4.isClickable = false
     }
 
-    private fun produceOptions(): MutableList<Double> {
-        correctOption = String.format("%.1f", diceA.toDouble() / diceB.toDouble()).toDouble()
-        val wrongOptionList = mutableListOf<Double>()
+    private fun produceOptions(){
+        correctOption = when (operator) {
+            binding.tvDivisionOperator.text -> String.format("%.1f", diceA.toDouble() / diceB.toDouble()).toDouble()
+            binding.tvMultiplicationOperator.text -> String.format("%.1f", diceA.toDouble() * diceB.toDouble()).toDouble()
+            binding.tvAdditionOperator.text -> String.format("%.1f", diceA.toDouble() + diceB.toDouble()).toDouble()
+            else -> String.format("%.1f", diceA.toDouble() - diceB.toDouble()).toDouble()
+        }
+
         val smallNumberList = mutableListOf(0.1, 0.3, 0.5)
         for (number in smallNumberList) {
             wrongOptionList.add(String.format("%.1f", correctOption + number).toDouble())
         }
-        return wrongOptionList
     }
 
     private fun setOptionsText() {
-        val wrongOptionList = produceOptions()
+        produceOptions()
         val tvOptionList = mutableListOf(
             binding.tvOption1,
             binding.tvOption2,
@@ -274,12 +289,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun pickRandomA(): Int {
-        diceA = (1..100).random()
+        diceA = diceARange.random()
         return diceA
     }
 
     private fun pickRandomB(): Int {
-        diceB = (1..10).random()
+        diceB = diceBRange.random()
         return diceB
     }
 }
