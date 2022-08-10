@@ -240,11 +240,20 @@ class MainActivity : AppCompatActivity() {
         binding.tvOption4.isClickable = false
     }
 
-    private fun produceOptions(){
+    private fun produceOptions() {
         correctOption = when (operator) {
-            binding.tvDivisionOperator.text.toString() -> String.format("%.1f", diceA.toDouble() / diceB.toDouble()).toDouble()
-            binding.tvMultiplicationOperator.text.toString() -> String.format("%.1f", diceA.toDouble() * diceB.toDouble()).toDouble()
-            binding.tvAdditionOperator.text.toString() -> String.format("%.1f", diceA.toDouble() + diceB.toDouble()).toDouble()
+            binding.tvDivisionOperator.text.toString() -> String.format(
+                "%.1f",
+                diceA.toDouble() / diceB.toDouble()
+            ).toDouble()
+            binding.tvMultiplicationOperator.text.toString() -> String.format(
+                "%.1f",
+                diceA.toDouble() * diceB.toDouble()
+            ).toDouble()
+            binding.tvAdditionOperator.text.toString() -> String.format(
+                "%.1f",
+                diceA.toDouble() + diceB.toDouble()
+            ).toDouble()
             else -> String.format("%.1f", diceA.toDouble() - diceB.toDouble()).toDouble()
         }
 

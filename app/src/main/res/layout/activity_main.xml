@@ -196,13 +196,13 @@
         app:layout_constraintTop_toBottomOf="@id/tvDiceARange" />
 
     <EditText
-        android:inputType="number"
-        android:text="@string/edtDiceRangeStart"
-        android:backgroundTint="@color/white"
         android:id="@+id/edtDiceARangeStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:backgroundTint="@color/white"
+        android:inputType="number"
+        android:text="@string/edtDiceRangeStart"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/tvDiceARange"
@@ -234,13 +234,13 @@
         app:layout_constraintTop_toTopOf="@id/edtDiceBRangeStart" />
 
     <EditText
-        android:inputType="number"
-        android:text="@string/edtDiceARangeEndText"
-        android:backgroundTint="@color/white"
         android:id="@+id/edtDiceARangeEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:backgroundTint="@color/white"
+        android:inputType="number"
+        android:text="@string/edtDiceARangeEndText"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/tvDiceARange"
@@ -248,13 +248,13 @@
         app:layout_constraintTop_toTopOf="@id/tvDiceARange" />
 
     <EditText
-        android:inputType="number"
-        android:text="@string/edtDiceRangeStart"
-        android:backgroundTint="@color/white"
         android:id="@+id/edtDiceBRangeStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:backgroundTint="@color/white"
+        android:inputType="number"
+        android:text="@string/edtDiceRangeStart"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/tvDiceBRange"
@@ -262,13 +262,13 @@
         app:layout_constraintTop_toTopOf="@id/tvDiceBRange" />
 
     <EditText
-        android:inputType="number"
-        android:text="@string/edtDiceBRangeEndText"
-        android:backgroundTint="@color/white"
         android:id="@+id/edtDiceBRangeEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:backgroundTint="@color/white"
+        android:inputType="number"
+        android:text="@string/edtDiceBRangeEndText"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/tvDiceBRange"
@@ -279,8 +279,8 @@
         android:id="@+id/tvChooseMathOperator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="8dp"
         android:layout_marginTop="8dp"
+        android:padding="8dp"
         android:text="@string/tvChooseMathOperator"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -348,13 +348,12 @@
         android:id="@+id/tvCountDownTimer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvTotalScore"
-        android:textSize="24sp"
         android:layout_margin="8dp"
         android:textColor="@color/white"
-        />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@id/tvTotalScore"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
