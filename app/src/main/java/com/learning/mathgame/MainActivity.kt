@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     var gameRound = 1
     var diceARange = (1..100)
     var diceBRange = (1..10)
-    lateinit var operator: CharSequence
+    var operator = "\u00F7"
     var wrongOptionList = mutableListOf<Double>()
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -155,7 +155,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setOperator(textView: TextView) {
         binding.tvMathOperator.text = textView.text
-        operator = textView.text
+        operator = textView.text.toString()
     }
 
     private fun startActivity2() {
@@ -224,9 +224,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun produceOptions(){
         correctOption = when (operator) {
-            binding.tvDivisionOperator.text -> String.format("%.1f", diceA.toDouble() / diceB.toDouble()).toDouble()
-            binding.tvMultiplicationOperator.text -> String.format("%.1f", diceA.toDouble() * diceB.toDouble()).toDouble()
-            binding.tvAdditionOperator.text -> String.format("%.1f", diceA.toDouble() + diceB.toDouble()).toDouble()
+            binding.tvDivisionOperator.text.toString() -> String.format("%.1f", diceA.toDouble() / diceB.toDouble()).toDouble()
+            binding.tvMultiplicationOperator.text.toString() -> String.format("%.1f", diceA.toDouble() * diceB.toDouble()).toDouble()
+            binding.tvAdditionOperator.text.toString() -> String.format("%.1f", diceA.toDouble() + diceB.toDouble()).toDouble()
             else -> String.format("%.1f", diceA.toDouble() - diceB.toDouble()).toDouble()
         }
 
