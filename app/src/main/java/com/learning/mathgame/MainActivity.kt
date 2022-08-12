@@ -283,10 +283,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setSecondaryViewsVisibility() {
         binding.btnRollDice.visibility = View.GONE
-        binding.tvDiceA.visibility = View.VISIBLE
-        binding.tvDiceB.visibility = View.VISIBLE
-        binding.tvMathOperator.visibility = View.VISIBLE
-        binding.tvQuestionMark.visibility = View.VISIBLE
         binding.tvOption1.visibility = View.VISIBLE
         binding.tvOption2.visibility = View.VISIBLE
         binding.tvOption3.visibility = View.VISIBLE
