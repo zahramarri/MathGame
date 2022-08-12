@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                binding.tvCountDownTimer.text = "Done!"
+                binding.tvCountDownTimer.text = "Time Out!"
                 makeOptionsNonClickable()
                 resetBtnRollDice(gameRound)
             }
