@@ -11,16 +11,7 @@ import com.learning.mathgame.databinding.ActivityMainBinding
 const val EXTRA_MESSAGE = "total score"
 
 class MainActivity : AppCompatActivity() {
-    private var diceA = 0
-    private var diceB = 0
-    private var correctOption = 0.0
-    private lateinit var correctOptionPlace: TextView
-    private var totalScore = 0
-    private var gameRound = 1
-    private var diceARange = (1..100)
-    private var diceBRange = (1..10)
-    private var operator = "\u00F7"
-    private var wrongOptionList = mutableListOf<Double>()
+    private lateinit var gameState: GameState
     private lateinit var countDownTimer: CountDownTimer
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,13 +25,18 @@ class MainActivity : AppCompatActivity() {
             override fun onFinish() {
                 binding.tvCountDownTimer.text = "Time Out!"
                 makeOptionsNonClickable()
-                resetBtnRollDice(gameRound)
+                resetBtnRollDice(gameState.gameRound)
             }
         }
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        if (savedInstanceState != null) {
+
+        }
+
         binding.btnStart.setOnClickListener {
+            initGameStateObject()
             if (controlDicesRange()) {
                 setPrimaryViewsVisibility()
             }
@@ -52,35 +48,35 @@ class MainActivity : AppCompatActivity() {
             setOptionsText()
             makeOptionsClickable()
             resetBackgroundColor()
-            gameRound++
+            gameState.gameRound++
             countDownTimer.start()
         }
 
         binding.tvOption1.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
-            resetBtnRollDice(gameRound)
+            resetBtnRollDice(gameState.gameRound)
             countDownTimer.cancel()
         }
 
         binding.tvOption2.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
-            resetBtnRollDice(gameRound)
+            resetBtnRollDice(gameState.gameRound)
             countDownTimer.cancel()
         }
 
         binding.tvOption3.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
-            resetBtnRollDice(gameRound)
+            resetBtnRollDice(gameState.gameRound)
             countDownTimer.cancel()
         }
 
         binding.tvOption4.setOnClickListener {
             checkUserAnswer(it)
             makeOptionsNonClickable()
-            resetBtnRollDice(gameRound)
+            resetBtnRollDice(gameState.gameRound)
             countDownTimer.cancel()
         }
 
@@ -99,6 +95,21 @@ class MainActivity : AppCompatActivity() {
         binding.tvDivisionOperator.setOnClickListener {
             setOperator(binding.tvDivisionOperator)
         }
+    }
+
+    private fun initGameStateObject() {
+        gameState = GameState(
+            0,
+            0,
+            0.0,
+            binding.tvOption1,
+            0,
+            1,
+            (1..100),
+            (1..10),
+            "\u00F7",
+            mutableListOf<Double>()
+        )
     }
 
     private fun controlDicesRange(): Boolean {
@@ -162,23 +173,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setDiceBRange() {
-        diceBRange = (binding.edtDiceBRangeStart.text.toString()
+        gameState.diceBRange = (binding.edtDiceBRangeStart.text.toString()
             .toInt()..binding.edtDiceBRangeEnd.text.toString().toInt())
     }
 
     private fun setDiceARange() {
-        diceARange = (binding.edtDiceARangeStart.text.toString()
+        gameState.diceARange = (binding.edtDiceARangeStart.text.toString()
             .toInt()..binding.edtDiceARangeEnd.text.toString().toInt())
     }
 
     private fun setOperator(textView: TextView) {
         binding.tvMathOperator.text = textView.text
-        operator = textView.text.toString()
+        gameState.operator = textView.text.toString()
     }
 
     private fun startActivity2() {
         val intent = Intent(this, Activity2::class.java)
-        intent.putExtra(EXTRA_MESSAGE, totalScore)
+        intent.putExtra(EXTRA_MESSAGE, gameState.totalScore)
         startActivity(intent)
     }
 
@@ -199,7 +210,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkUserAnswer(tvOption: View) {
-        if (tvOption == correctOptionPlace) {
+        if (tvOption == gameState.correctOptionPlace) {
             increaseTotalScore()
             setBackgroundColorBasedOnAnswer(true, tvOption)
         } else {
@@ -217,13 +228,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun decreaseTotalScore() {
-        totalScore -= 2
-        binding.tvTotalScore.text = totalScore.toString()
+        gameState.totalScore -= 2
+        binding.tvTotalScore.text = gameState.totalScore.toString()
     }
 
     private fun increaseTotalScore() {
-        totalScore += 5
-        binding.tvTotalScore.text = totalScore.toString()
+        gameState.totalScore += 5
+        binding.tvTotalScore.text = gameState.totalScore.toString()
     }
 
     private fun makeOptionsClickable() {
@@ -241,26 +252,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun produceOptions() {
-        correctOption = when (operator) {
+        gameState.correctOption = when (gameState.operator) {
             binding.tvDivisionOperator.text.toString() -> String.format(
                 "%.1f",
-                diceA.toDouble() / diceB.toDouble()
+                gameState.diceA.toDouble() / gameState.diceB.toDouble()
             ).toDouble()
             binding.tvMultiplicationOperator.text.toString() -> String.format(
                 "%.1f",
-                diceA.toDouble() * diceB.toDouble()
+                gameState.diceA.toDouble() * gameState.diceB.toDouble()
             ).toDouble()
             binding.tvAdditionOperator.text.toString() -> String.format(
                 "%.1f",
-                diceA.toDouble() + diceB.toDouble()
+                gameState.diceA.toDouble() + gameState.diceB.toDouble()
             ).toDouble()
-            else -> String.format("%.1f", diceA.toDouble() - diceB.toDouble()).toDouble()
+            else -> String.format("%.1f", gameState.diceA.toDouble() - gameState.diceB.toDouble()).toDouble()
         }
 
         val smallNumberList = mutableListOf(0.1, 0.3, 0.5)
-        wrongOptionList.clear()
+        gameState.wrongOptionList.clear()
         for (number in smallNumberList) {
-            wrongOptionList.add(String.format("%.1f", correctOption + number).toDouble())
+            gameState.wrongOptionList.add(String.format("%.1f", gameState.correctOption + number).toDouble())
         }
     }
 
@@ -272,12 +283,12 @@ class MainActivity : AppCompatActivity() {
             binding.tvOption3,
             binding.tvOption4
         )
-        correctOptionPlace = tvOptionList.random()
-        correctOptionPlace.text = correctOption.toString()
-        tvOptionList.remove(correctOptionPlace)
+        gameState.correctOptionPlace = tvOptionList.random()
+        gameState.correctOptionPlace.text = gameState.correctOption.toString()
+        tvOptionList.remove(gameState.correctOptionPlace)
 
         for ((i, tvOption) in tvOptionList.withIndex()) {
-            tvOption.text = wrongOptionList[i].toString()
+            tvOption.text = gameState.wrongOptionList[i].toString()
         }
     }
 
@@ -313,12 +324,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun pickRandomA(): Int {
-        diceA = diceARange.random()
-        return diceA
+        gameState.diceA = gameState.diceARange.random()
+        return gameState.diceA
     }
 
     private fun pickRandomB(): Int {
-        diceB = diceBRange.random()
-        return diceB
+        gameState.diceB = gameState.diceBRange.random()
+        return gameState.diceB
     }
+
 }
