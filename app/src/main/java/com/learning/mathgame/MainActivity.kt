@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
     private var diceARange = (1..100)
     private var diceBRange = (1..10)
     private var operator = "\u00F7"
-    private lateinit var countDownTimer: CountDownTimer
     private var wrongOptionList = mutableListOf<Double>()
+    private lateinit var countDownTimer: CountDownTimer
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
