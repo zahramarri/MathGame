@@ -31,12 +31,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        if (savedInstanceState != null) {
-
-        }
+        initGameStateObject()
 
         binding.btnStart.setOnClickListener {
-            initGameStateObject()
             if (controlDicesRange()) {
                 setPrimaryViewsVisibility()
             }
@@ -265,13 +262,16 @@ class MainActivity : AppCompatActivity() {
                 "%.1f",
                 gameState.diceA.toDouble() + gameState.diceB.toDouble()
             ).toDouble()
-            else -> String.format("%.1f", gameState.diceA.toDouble() - gameState.diceB.toDouble()).toDouble()
+            else -> String.format("%.1f", gameState.diceA.toDouble() - gameState.diceB.toDouble())
+                .toDouble()
         }
 
         val smallNumberList = mutableListOf(0.1, 0.3, 0.5)
         gameState.wrongOptionList.clear()
         for (number in smallNumberList) {
-            gameState.wrongOptionList.add(String.format("%.1f", gameState.correctOption + number).toDouble())
+            gameState.wrongOptionList.add(
+                String.format("%.1f", gameState.correctOption + number).toDouble()
+            )
         }
     }
 
